@@ -1,3 +1,6 @@
+import { AuthTypes } from "../auth-types";
+import { GameUnit } from "../game-unit";
+
 export interface IGameConfig {
   name: string;
   description: string;
@@ -5,4 +8,6 @@ export interface IGameConfig {
   creatorKey: string;
   distributorKey: string;
   logo?: string;
+  gameUnits: GameUnit[];
+  authOptions: AuthTypes[];
 }

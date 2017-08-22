@@ -24,6 +24,9 @@ export abstract class Game implements IGame {
 
     this.creatorKey = settings.creatorKey || settings.distributorKey;
     this.distributorKey = this.distributorKey || settings.creatorKey;
+
+    this.gameUnits = settings.gameUnits;
+    this.authOptions = settings.authOptions;
   }
 
   public getName(): string {
