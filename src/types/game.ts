@@ -1,7 +1,7 @@
-import { IAuthCode, IAuthResult, IGame, IGameConfig } from './interfaces';
+import { IAuthCode, IAuthResult, IGame, IGameConfig } from '../interfaces';
 
 import { kebabCase } from 'lodash';
-import { AuthTypes } from './enums';
+import { AuthTypes } from '../enums';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {

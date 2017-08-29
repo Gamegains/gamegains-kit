@@ -1,4 +1,4 @@
-import { IGameUnit, IUnitParameter } from './interfaces';
+import { IGameUnit, IUnitParameter } from '../interfaces';
 
 export class GameUnit implements IGameUnit {
   private readonly name: string;
