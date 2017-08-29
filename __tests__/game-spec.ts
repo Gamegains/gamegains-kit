@@ -1,4 +1,5 @@
 import {
+  AuthCode,
   AuthResult,
   AuthTypes,
   Game,
@@ -35,21 +36,40 @@ class LeagueOfLegends extends Game implements IGame {
   }
 
   protected authenticateWithCode(): Promise<IAuthCode | IAuthResult> {
-    return AuthResult.METHOD_NOT_IMPLEMENTED;
+    return new Promise<IAuthCode>(resolve => {
+      setTimeout(() => {
+        resolve(new AuthCode('9794946180'));
+      }, 500);
+    });
   }
 }
 
 const gameInstance: Game = new LeagueOfLegends();
 
-test('Game type getters are working properly', () => {
+test('Game type getters', () => {
   expect(gameInstance.getName()).toBe('League of Legends');
   expect(gameInstance.getDescription().length).toBeGreaterThan(0);
+  expect(gameInstance.getId()).toBe('league-of-legends');
+  expect(gameInstance.getCreatorKey().length).toBeGreaterThanOrEqual(20);
+  expect(gameInstance.getDistributorKey().length).toBeGreaterThanOrEqual(20);
   expect(gameInstance.getAuthTypes().length).not.toBe(0);
   expect(gameInstance.getGameUnits().length).toBe(0);
   expect(gameInstance.getLogo()).toBeUndefined();
 });
 
-test('Should Game type auth type methods correctly change instance', () => {
+test('Game type authenticate methods', async () => {
+  expect.assertions(2);
+
+  await expect(
+    gameInstance.authenticate(AuthTypes.LOGIN)
+  ).rejects.toMatchObject(AuthResult.METHOD_NOT_IMPLEMENTED);
+
+  await expect(
+    gameInstance.authenticate(AuthTypes.CODE)
+  ).resolves.toBeDefined();
+});
+
+test('Game type auth type methods', () => {
   expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.LOGIN);
   gameInstance.setDefaultAuthType(AuthTypes.CODE);
   expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.CODE);
