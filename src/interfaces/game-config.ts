@@ -1,4 +1,4 @@
-import { AuthTypes } from '../auth-types';
+import { AuthTypes } from '../enums';
 import { GameUnit } from '../game-unit';
 
 export interface IGameConfig {
