@@ -75,7 +75,9 @@ export abstract class Game implements IGame {
     this.authTypes.unshift(1);
   }
 
-  public authenticate(authType: AuthTypes = this.getDefaultAuthType()): Promise<IAuthResult | IAuthCode> {
+  public authenticate(
+    authType: AuthTypes = this.getDefaultAuthType()
+  ): Promise<IAuthResult | IAuthCode> {
     switch (authType) {
       case AuthTypes.LOGIN:
         return this.authenticateWithLogin();

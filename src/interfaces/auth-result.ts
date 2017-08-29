@@ -1,4 +1,4 @@
-import {AuthStatus} from "../enums";
+import { AuthStatus } from '../enums';
 
 export interface IAuthResult {
   status: AuthStatus;
