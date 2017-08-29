@@ -4,7 +4,7 @@ export class GameUnit implements IGameUnit {
   private readonly name: string;
   private readonly description?: string;
   private readonly id?: string;
-  private parameters: IUnitParameter[];
+  private readonly parameters: IUnitParameter[];
 
   public getName(): string {
     return this.name;

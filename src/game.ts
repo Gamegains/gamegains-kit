@@ -1,4 +1,4 @@
-import { IGame, IGameConfig } from './interfaces';
+import { IAuthResult, IGame, IGameConfig } from './interfaces';
 
 import { kebabCase } from 'lodash';
 import { AuthTypes } from './auth-types';
@@ -10,10 +10,12 @@ export abstract class Game implements IGame {
   private readonly id?: string;
   private readonly creatorKey: string;
   private readonly distributorKey: string;
-  private gameUnits: GameUnit[];
-  private authOptions: AuthTypes[];
+  private readonly gameUnits: GameUnit[];
+  private readonly authTypes: AuthTypes[];
 
   private logo?: string;
+
+  private defaultAuthOption: AuthTypes;
 
   constructor(settings: IGameConfig) {
     this.name = settings.name;
@@ -26,7 +28,9 @@ export abstract class Game implements IGame {
     this.distributorKey = this.distributorKey || settings.creatorKey;
 
     this.gameUnits = settings.gameUnits;
-    this.authOptions = settings.authOptions;
+    this.authTypes = settings.authOptions;
+
+    this.defaultAuthOption = this.authTypes[0];
   }
 
   public getName(): string {
@@ -54,18 +58,33 @@ export abstract class Game implements IGame {
   }
 
   public getAuthOptions(): AuthTypes[] {
-    return this.authOptions;
+    return this.authTypes;
   }
 
   public getLogo(): string {
     return this.logo;
   }
 
-  public add
+  public getDefaultAuthType(): AuthTypes {
+    return this.authTypes[0];
+  }
 
-  public authenticate() {}
+  public setDefaultAuthType(type: AuthTypes): void {
+    const index = this.authTypes.indexOf(type);
+    this.authTypes.splice(index, 1);
+    this.authTypes.unshift(1);
+  }
 
-  public authenticateWithLogin() {}
+  public authenticate(authType: AuthTypes = this.getDefaultAuthType()): Promise<IAuthResult> {
+    switch (authType) {
+      case AuthTypes.LOGIN:
+        return this.authenticateWithLogin();
+      case AuthTypes.CODE:
+        return this.authenticateWithCode();
+    }
+  }
 
-  public authenticateWithCode() {}
+  public abstract authenticateWithLogin(): Promise<IAuthResult>;
+
+  public abstract authenticateWithCode(): Promise<IAuthResult>;
 }
