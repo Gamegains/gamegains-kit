@@ -1,4 +1,5 @@
-import { IGameConfig } from './game-config';
+import {AuthTypes} from "../auth-types";
+import {GameUnit} from "../game-unit";
 
 export interface IGame {
   getName(): string;
@@ -6,6 +7,8 @@ export interface IGame {
   getId(): string;
   getCreatorKey(): string;
   getDistributorKey(): string;
+  getGameUnits(): GameUnit[];
+  getAuthOptions(): AuthTypes[];
   getLogo(): string;
   authenticate(): void;
 }
