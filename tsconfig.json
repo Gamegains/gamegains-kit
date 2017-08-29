@@ -6,7 +6,7 @@
     "lib": [
       "esnext"
     ],
-    "target": "es2015",
+    "target": "ES5",
     "noImplicitAny": true,
     "outDir": "./lib",
     "preserveConstEnums": true,

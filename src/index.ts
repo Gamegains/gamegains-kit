@@ -1,2 +1,2 @@
-export * from './game';
-export * from './game-config';
+export * from './types';
+export * from './interfaces';
