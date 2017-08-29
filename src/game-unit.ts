@@ -1,9 +1,9 @@
 import { IGameUnit, IUnitParameter } from './interfaces';
 
 export class GameUnit implements IGameUnit {
-  private name: string;
-  private description?: string;
-  private id?: string;
+  private readonly name: string;
+  private readonly description?: string;
+  private readonly id?: string;
   private parameters: IUnitParameter[];
 
   public getName(): string {
