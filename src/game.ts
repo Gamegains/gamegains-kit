@@ -1,4 +1,4 @@
-import { IAuthResult, IGame, IGameConfig } from './interfaces';
+import { IAuthCode, IAuthResult, IGame, IGameConfig } from './interfaces';
 
 import { kebabCase } from 'lodash';
 import { AuthTypes } from './enums/auth-types';
@@ -75,7 +75,7 @@ export abstract class Game implements IGame {
     this.authTypes.unshift(1);
   }
 
-  public authenticate(authType: AuthTypes = this.getDefaultAuthType()): Promise<IAuthResult> {
+  public authenticate(authType: AuthTypes = this.getDefaultAuthType()): Promise<IAuthResult | IAuthCode> {
     switch (authType) {
       case AuthTypes.LOGIN:
         return this.authenticateWithLogin();
@@ -86,5 +86,5 @@ export abstract class Game implements IGame {
 
   public abstract authenticateWithLogin(): Promise<IAuthResult>;
 
-  public abstract authenticateWithCode(): Promise<IAuthResult>;
+  public abstract authenticateWithCode(): Promise<IAuthCode>;
 }
