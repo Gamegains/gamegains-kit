@@ -9,5 +9,5 @@ export interface IGameConfig {
   distributorKey: string;
   logo?: string;
   gameUnits: GameUnit[];
-  authOptions: AuthTypes[];
+  authTypes: AuthTypes[];
 }

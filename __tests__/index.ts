@@ -1,4 +1,4 @@
-import {Game, GameUnit} from "../src/";
+import { Game, GameUnit } from '../src/';
 
 test('Should have Game type available', () => {
   expect(Game).toBeTruthy();

@@ -1,5 +1,6 @@
 import { AuthTypes } from '../enums';
-import { GameUnit } from '../types/game-unit';
+import { IAuthCode, IAuthResult } from '../interfaces';
+import { GameUnit } from '../types';
 
 export interface IGame {
   getName(): string;
@@ -8,7 +9,7 @@ export interface IGame {
   getCreatorKey(): string;
   getDistributorKey(): string;
   getGameUnits(): GameUnit[];
-  getAuthOptions(): AuthTypes[];
+  getAuthTypes(): AuthTypes[];
   getLogo(): string;
   authenticate(): void;
 }

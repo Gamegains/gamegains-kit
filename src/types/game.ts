@@ -1,7 +1,8 @@
 import { IAuthCode, IAuthResult, IGame, IGameConfig } from '../interfaces';
 
 import { kebabCase } from 'lodash';
-import { AuthTypes } from '../enums';
+import { AuthStatus, AuthTypes } from '../enums';
+import { AuthResult } from './auth-result';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
@@ -28,7 +29,7 @@ export abstract class Game implements IGame {
     this.distributorKey = this.distributorKey || settings.creatorKey;
 
     this.gameUnits = settings.gameUnits;
-    this.authTypes = settings.authOptions;
+    this.authTypes = settings.authTypes;
 
     this.defaultAuthOption = this.authTypes[0];
   }
@@ -57,7 +58,7 @@ export abstract class Game implements IGame {
     return this.gameUnits;
   }
 
-  public getAuthOptions(): AuthTypes[] {
+  public getAuthTypes(): AuthTypes[] {
     return this.authTypes;
   }
 
@@ -86,7 +87,7 @@ export abstract class Game implements IGame {
     }
   }
 
-  public abstract authenticateWithLogin(): Promise<IAuthResult>;
+  protected abstract authenticateWithLogin(): Promise<IAuthResult>;
 
-  public abstract authenticateWithCode(): Promise<IAuthCode>;
+  protected abstract authenticateWithCode(): Promise<IAuthCode | IAuthResult>;
 }

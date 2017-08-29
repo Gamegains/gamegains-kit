@@ -1,4 +1,5 @@
 export interface IAuthCode {
-  code: string;
-  expiration: Date;
+  getCode(): string;
+  getExpiration(): Date;
+  hasExpired(): boolean;
 }
