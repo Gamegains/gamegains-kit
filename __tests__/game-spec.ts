@@ -39,7 +39,7 @@ class LeagueOfLegends extends Game implements IGame {
   }
 }
 
-const gameInstance = new LeagueOfLegends();
+const gameInstance: Game = new LeagueOfLegends();
 
 test('Game type getters are working properly', () => {
   expect(gameInstance.getName()).toBe('League of Legends');
