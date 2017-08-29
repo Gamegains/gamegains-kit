@@ -5,11 +5,11 @@ import { AuthTypes } from './auth-types';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
-  private name: string;
-  private description: string;
-  private id?: string;
-  private creatorKey: string;
-  private distributorKey: string;
+  private readonly name: string;
+  private readonly description: string;
+  private readonly id?: string;
+  private readonly creatorKey: string;
+  private readonly distributorKey: string;
   private gameUnits: GameUnit[];
   private authOptions: AuthTypes[];
 
@@ -60,6 +60,8 @@ export abstract class Game implements IGame {
   public getLogo(): string {
     return this.logo;
   }
+
+  public add
 
   public authenticate() {}
 

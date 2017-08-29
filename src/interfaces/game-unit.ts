@@ -4,5 +4,5 @@ export interface IGameUnit {
   getName(): string;
   getDescription(): string;
   getId(): string;
-  getParameters(): string;
+  getParameters(): IUnitParameter[];
 }
