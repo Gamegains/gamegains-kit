@@ -1,8 +1,8 @@
 import { IGame, IGameConfig } from './interfaces';
 
+import { kebabCase } from 'lodash';
 import { AuthTypes } from './auth-types';
 import { GameUnit } from './game-unit';
-import { kebabCase } from 'lodash';
 
 export abstract class Game implements IGame {
   private name: string;
@@ -32,7 +32,7 @@ export abstract class Game implements IGame {
   public getName(): string {
     return this.name;
   }
-  
+
   public getDescription(): string {
     return this.description;
   }
@@ -47,6 +47,14 @@ export abstract class Game implements IGame {
 
   public getDistributorKey(): string {
     return this.distributorKey;
+  }
+
+  public getGameUnits(): GameUnit[] {
+    return this.gameUnits;
+  }
+
+  public getAuthOptions(): AuthTypes[] {
+    return this.authOptions;
   }
 
   public getLogo(): string {

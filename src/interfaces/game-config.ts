@@ -1,5 +1,5 @@
-import { AuthTypes } from "../auth-types";
-import { GameUnit } from "../game-unit";
+import { AuthTypes } from '../auth-types';
+import { GameUnit } from '../game-unit';
 
 export interface IGameConfig {
   name: string;
