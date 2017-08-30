@@ -1,8 +1,7 @@
 import { IAuthCode, IAuthResult, IGame, IGameConfig } from '../interfaces';
 
 import { kebabCase } from 'lodash';
-import { AuthStatus, AuthTypes } from '../enums';
-import { AuthResult } from './auth-result';
+import { AuthTypes } from '../enums';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
@@ -89,5 +88,5 @@ export abstract class Game implements IGame {
 
   protected abstract authenticateWithLogin(): Promise<IAuthResult>;
 
-  protected abstract authenticateWithCode(): Promise<IAuthCode | IAuthResult>;
+  protected abstract authenticateWithCode(): Promise<IAuthResult>;
 }

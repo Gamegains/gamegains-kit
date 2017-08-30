@@ -3,12 +3,10 @@ import { IAuthResult } from '../interfaces';
 
 export class AuthResult implements IAuthResult {
   public static get METHOD_NOT_IMPLEMENTED(): Promise<IAuthResult> {
-    return new Promise<IAuthResult>((resolve, reject) =>
-      reject(
-        new AuthResult(
-          AuthStatus.AUTH_NOT_IMPLEMENTED,
-          'Authentication method not implemented.'
-        )
+    return Promise.reject(
+      new AuthResult(
+        AuthStatus.AUTH_NOT_IMPLEMENTED,
+        'Authentication method not implemented.'
       )
     );
   }
@@ -25,7 +23,7 @@ export class AuthResult implements IAuthResult {
     return this.status;
   }
 
-  public getMesspge(): string {
+  public getMessage(): string {
     return this.message;
   }
 }

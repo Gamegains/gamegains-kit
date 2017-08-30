@@ -1,6 +1,8 @@
+import { AuthStatus } from '../enums';
 import { IAuthCode } from '../interfaces';
+import { AuthResult } from './auth-result';
 
-export class AuthCode implements IAuthCode {
+export class AuthCode extends AuthResult implements IAuthCode {
   private code: string;
   private expiration: Date;
 
@@ -11,6 +13,7 @@ export class AuthCode implements IAuthCode {
   }
 
   constructor(code: string, expiration: Date = AuthCode.pastDate) {
+    super(AuthStatus.SUCCESS, 'Successfully generated authentication code.');
     this.code = code;
     this.expiration = expiration;
   }
