@@ -3,7 +3,6 @@ import {
   AuthResult,
   AuthTypes,
   Game,
-  IAuthCode,
   IAuthResult,
   IGame,
   IGameConfig,
@@ -35,42 +34,40 @@ class LeagueOfLegends extends Game implements IGame {
     return AuthResult.METHOD_NOT_IMPLEMENTED;
   }
 
-  protected authenticateWithCode(): Promise<IAuthCode | IAuthResult> {
-    return new Promise<IAuthCode>(resolve => {
-      setTimeout(() => {
-        resolve(new AuthCode('9794946180'));
-      }, 500);
-    });
+  protected authenticateWithCode(): Promise<IAuthResult> {
+    return Promise.resolve(new AuthCode('9794946180'));
   }
 }
 
 const gameInstance: Game = new LeagueOfLegends();
 
-test('Game type getters', () => {
-  expect(gameInstance.getName()).toBe('League of Legends');
-  expect(gameInstance.getDescription().length).toBeGreaterThan(0);
-  expect(gameInstance.getId()).toBe('league-of-legends');
-  expect(gameInstance.getCreatorKey().length).toBeGreaterThanOrEqual(20);
-  expect(gameInstance.getDistributorKey().length).toBeGreaterThanOrEqual(20);
-  expect(gameInstance.getAuthTypes().length).not.toBe(0);
-  expect(gameInstance.getGameUnits().length).toBe(0);
-  expect(gameInstance.getLogo()).toBeUndefined();
-});
+describe('Game type', () => {
+  test('getters', () => {
+    expect(gameInstance.getName()).toBe('League of Legends');
+    expect(gameInstance.getDescription().length).toBeGreaterThan(0);
+    expect(gameInstance.getId()).toBe('league-of-legends');
+    expect(gameInstance.getCreatorKey().length).toBeGreaterThanOrEqual(20);
+    expect(gameInstance.getDistributorKey().length).toBeGreaterThanOrEqual(20);
+    expect(gameInstance.getAuthTypes().length).not.toBe(0);
+    expect(gameInstance.getGameUnits().length).toBe(0);
+    expect(gameInstance.getLogo()).toBeUndefined();
+  });
 
-test('Game type authenticate methods', async () => {
-  expect.assertions(2);
+  test('authentication methods', async () => {
+    expect.assertions(2);
 
-  await expect(
-    gameInstance.authenticate(AuthTypes.LOGIN)
-  ).rejects.toMatchObject(AuthResult.METHOD_NOT_IMPLEMENTED);
+    await expect(
+      gameInstance.authenticate(AuthTypes.LOGIN)
+    ).rejects.toHaveProperty('status');
 
-  await expect(
-    gameInstance.authenticate(AuthTypes.CODE)
-  ).resolves.toBeDefined();
-});
+    await expect(
+      gameInstance.authenticate(AuthTypes.CODE)
+    ).resolves.toBeInstanceOf(AuthCode);
+  });
 
-test('Game type auth type methods', () => {
-  expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.LOGIN);
-  gameInstance.setDefaultAuthType(AuthTypes.CODE);
-  expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.CODE);
+  test('AuthType methods', () => {
+    expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.LOGIN);
+    gameInstance.setDefaultAuthType(AuthTypes.CODE);
+    expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.CODE);
+  });
 });
