@@ -3,8 +3,8 @@ import { IAuthCode } from '../interfaces';
 import { AuthResult } from './auth-result';
 
 export class AuthCode extends AuthResult implements IAuthCode {
-  private code: string;
-  private expiration: Date;
+  private readonly code: string;
+  private readonly expiration: Date;
 
   private static get pastDate(): Date {
     const date = new Date();
