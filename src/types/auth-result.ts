@@ -11,8 +11,8 @@ export class AuthResult implements IAuthResult {
     );
   }
 
-  private status: AuthStatus;
-  private message: string;
+  private readonly status: AuthStatus;
+  private readonly message: string;
 
   constructor(status: AuthStatus, message?: string) {
     this.status = status;
