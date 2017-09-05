@@ -10,7 +10,9 @@ const authCode = new AuthCode(code, expirationDate);
 describe('AuthCode type', () => {
   test('getters', () => {
     expect(authCode.getCode()).toBe(code);
-    expect(authCode.getExpiration().getFullYear()).toBeLessThan(new Date().getFullYear());
+    expect(authCode.getExpiration().getFullYear()).toBeLessThan(
+      new Date().getFullYear()
+    );
   });
 
   test('expiration check', () => {

@@ -1,5 +1,4 @@
-import {AuthResult, AuthStatus} from "../src";
-
+import { AuthResult, AuthStatus } from '../src';
 
 describe('AuthResult type', () => {
   test('getters', () => {
@@ -9,7 +8,9 @@ describe('AuthResult type', () => {
   });
 
   test('static methods', () => {
-    expect(AuthResult.METHOD_NOT_IMPLEMENTED).rejects.toHaveProperty('status').then();
+    expect(AuthResult.METHOD_NOT_IMPLEMENTED).rejects
+      .toHaveProperty('status')
+      .then();
     expect(AuthResult.METHOD_NOT_IMPLEMENTED).rejects.toHaveProperty('message');
   });
 });
