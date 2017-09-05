@@ -3,4 +3,5 @@ export interface IUnitParameter {
   getDescription?(): string;
   getId?(): string;
   getWeight(): number;
+  getValue(): Promise<number>;
 }
