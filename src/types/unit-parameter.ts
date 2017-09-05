@@ -1,7 +1,7 @@
 import { kebabCase } from 'lodash';
 import { IUnitParameter, IUnitParameterConfig } from '../interfaces';
 
-export class UnitParameter implements IUnitParameter {
+export abstract class UnitParameter implements IUnitParameter {
   private readonly name: string;
   private readonly description: string;
   private readonly id: string;
@@ -17,18 +17,20 @@ export class UnitParameter implements IUnitParameter {
   }
 
   public getName(): string {
-    throw new Error('Method not implemented.');
+    return this.name;
   }
 
   public getDescription(): string {
-    throw new Error('Method not implemented.');
+    return this.description;
   }
 
   public getId(): string {
-    throw new Error('Method not implemented.');
+    return this.description;
   }
 
   public getWeight(): number {
-    throw new Error('Method not implemented.');
+    return this.weight;
   }
+
+  public abstract getValue(): Promise<number>;
 }

@@ -1,7 +1,7 @@
 import { kebabCase } from 'lodash';
 import { IGameUnit, IGameUnitConfig, IUnitParameter } from '../interfaces';
 
-export class GameUnit implements IGameUnit {
+export abstract class GameUnit implements IGameUnit {
   public static initUnits(unitArray: any, ...units: any[]): GameUnit[] {
     if (Array.isArray(unitArray)) {
       return GameUnit.initUnits.apply(this, unitArray);

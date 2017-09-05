@@ -13,7 +13,7 @@ import { Match } from '../units';
 
 export class LeagueOfLegends extends Game implements IGame {
   // noinspection TsLint
-  private static GAME_CONFIG: IGameConfig = {
+  private static readonly GAME_CONFIG: IGameConfig = {
     name: 'League of Legends',
 
     description:
