@@ -1,1 +1,1 @@
-export {Match} from "./match";
+export { Match } from './match';

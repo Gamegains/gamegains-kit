@@ -1,1 +1,1 @@
-export {LeagueOfLegends} from "./league-of-legends";
+export { LeagueOfLegends } from './league-of-legends';

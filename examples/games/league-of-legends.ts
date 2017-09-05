@@ -1,6 +1,15 @@
-import {AuthCode, AuthResult, AuthTypes, Game, GameUnit, IAuthResult, IGame, IGameConfig} from "../../src";
+import {
+  AuthCode,
+  AuthResult,
+  AuthTypes,
+  Game,
+  GameUnit,
+  IAuthResult,
+  IGame,
+  IGameConfig,
+} from '../../src';
 
-import {Match} from "../units";
+import { Match } from '../units';
 
 export class LeagueOfLegends extends Game implements IGame {
   // noinspection TsLint
@@ -8,9 +17,9 @@ export class LeagueOfLegends extends Game implements IGame {
     name: 'League of Legends',
 
     description:
-    'League of Legends (abbreviated LoL) is a multiplayer ' +
-    'online battle arena video game developed and published ' +
-    'by Riot Games for Microsoft Windows and macOS.',
+      'League of Legends (abbreviated LoL) is a multiplayer ' +
+      'online battle arena video game developed and published ' +
+      'by Riot Games for Microsoft Windows and macOS.',
 
     // Randomly generated with https://www.random.org
     creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',

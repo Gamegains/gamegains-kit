@@ -1,4 +1,4 @@
-import {GameUnit, IGameUnit, IGameUnitConfig} from "../../src";
+import { GameUnit, IGameUnit, IGameUnitConfig } from '../../src';
 
 export class Match extends GameUnit implements IGameUnit {
   // noinspection TsLint
