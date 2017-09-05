@@ -2,6 +2,17 @@ import { kebabCase } from 'lodash';
 import { IGameUnit, IGameUnitConfig, IUnitParameter } from '../interfaces';
 
 export class GameUnit implements IGameUnit {
+  public static initUnits(unitArray: any, ...units: any[]): GameUnit[] {
+    if (Array.isArray(unitArray)) {
+      return GameUnit.initUnits.apply(this, unitArray);
+    }
+
+    const fullArray: GameUnit[] = units || [];
+    fullArray.unshift(unitArray);
+
+    return fullArray.map((Unit: any) => new Unit());
+  }
+
   private readonly name: string;
   private readonly description?: string;
   private readonly id?: string;

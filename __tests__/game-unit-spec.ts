@@ -1,19 +1,7 @@
-import {GameUnit, IGameUnit, IGameUnitConfig} from "../src";
+import { Match } from '../examples/units';
+import { GameUnit } from '../src/types';
 
-class Match extends GameUnit implements IGameUnit {
-  // noinspection TsLint
-  private static GAME_UNIT_CONFIG: IGameUnitConfig = {
-    name: 'Match',
-    description: 'Main game unit in League of Legends',
-    parameters: [],
-  };
-
-  constructor() {
-    super(Match.GAME_UNIT_CONFIG);
-  }
-}
-
-const gameUnitInstance = new Match();
+const gameUnitInstance: GameUnit = new Match();
 
 describe('GameUnit type', () => {
   test('getters', () => {
@@ -21,5 +9,10 @@ describe('GameUnit type', () => {
     expect(gameUnitInstance.getDescription().length).toBeGreaterThan(0);
     expect(gameUnitInstance.getId()).toBe('match');
     expect(gameUnitInstance.getParameters().length).toBe(0);
+  });
+
+  test('static methods', () => {
+    expect(GameUnit.initUnits(Match)[0]).toBeInstanceOf(GameUnit);
+    expect(GameUnit.initUnits([Match])[0]).toBeInstanceOf(GameUnit);
   });
 });

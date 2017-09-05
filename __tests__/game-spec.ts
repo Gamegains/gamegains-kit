@@ -1,43 +1,6 @@
-import {
-  AuthCode,
-  AuthResult,
-  AuthTypes,
-  Game,
-  IAuthResult,
-  IGame,
-  IGameConfig,
-} from '../src';
+import { AuthCode, AuthTypes, Game, GameUnit } from '../src';
 
-class LeagueOfLegends extends Game implements IGame {
-  // noinspection TsLint
-  private static GAME_CONFIG: IGameConfig = {
-    name: 'League of Legends',
-
-    description:
-      'League of Legends (abbreviated LoL) is a multiplayer ' +
-      'online battle arena video game developed and published ' +
-      'by Riot Games for Microsoft Windows and macOS.',
-
-    // Randomly generated with https://www.random.org
-    creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',
-    distributorKey: '837EBP7nm4ynukGouqSE',
-
-    gameUnits: [],
-    authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
-  };
-
-  constructor() {
-    super(LeagueOfLegends.GAME_CONFIG);
-  }
-
-  protected authenticateWithLogin(): Promise<IAuthResult> {
-    return AuthResult.METHOD_NOT_IMPLEMENTED;
-  }
-
-  protected authenticateWithCode(): Promise<IAuthResult> {
-    return Promise.resolve(new AuthCode('9794946180'));
-  }
-}
+import { LeagueOfLegends } from '../examples/games';
 
 const gameInstance: Game = new LeagueOfLegends();
 
@@ -49,7 +12,9 @@ describe('Game type', () => {
     expect(gameInstance.getCreatorKey().length).toBeGreaterThanOrEqual(20);
     expect(gameInstance.getDistributorKey().length).toBeGreaterThanOrEqual(20);
     expect(gameInstance.getAuthTypes().length).not.toBe(0);
-    expect(gameInstance.getGameUnits().length).toBe(0);
+    expect(gameInstance.getGameUnits().length).toBe(1);
+    expect(gameInstance.getGameUnits()[0]).toBeInstanceOf(GameUnit);
+    expect(gameInstance.getGameUnits()[1]).toBeUndefined();
     expect(gameInstance.getLogo()).toBeUndefined();
   });
 
