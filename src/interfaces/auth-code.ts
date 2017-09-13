@@ -1,4 +1,7 @@
-export interface IAuthCode {
-  code: string;
-  expiration: Date;
+import { IAuthResult } from './auth-result';
+
+export interface IAuthCode extends IAuthResult {
+  getCode(): string;
+  getExpiration(): Date;
+  hasExpired(): boolean;
 }

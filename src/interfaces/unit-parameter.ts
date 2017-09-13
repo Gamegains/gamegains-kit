@@ -1,6 +1,7 @@
 export interface IUnitParameter {
-  name: string;
-  description?: string;
-  id?: string;
-  weight: number;
+  getName(): string;
+  getDescription?(): string;
+  getId?(): string;
+  getWeight(): number;
+  getValue(): Promise<number>;
 }

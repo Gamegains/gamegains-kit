@@ -1,6 +1,6 @@
 import { AuthStatus } from '../enums';
 
 export interface IAuthResult {
-  status: AuthStatus;
-  message?: string;
+  getStatus(): AuthStatus;
+  getMessage?(): string;
 }
