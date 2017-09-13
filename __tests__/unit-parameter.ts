@@ -1,6 +1,6 @@
 import { UnitParameter } from '../src';
 
-import {Kill} from "../examples/unit-parameters";
+import { Kill } from '../examples/unit-parameters';
 
 const unitParameterInstance: UnitParameter = new Kill();
 

@@ -1,5 +1,11 @@
-import {Game, GameUnit, IGameUnit, IGameUnitConfig, UnitParameter} from '../../src';
-import {Kill} from "../unit-parameters/kill";
+import {
+  Game,
+  GameUnit,
+  IGameUnit,
+  IGameUnitConfig,
+  UnitParameter,
+} from '../../src';
+import { Kill } from '../unit-parameters/kill';
 
 export class Match extends GameUnit implements IGameUnit {
   // noinspection TsLint
@@ -18,12 +24,10 @@ export class Match extends GameUnit implements IGameUnit {
       const kill = new Kill();
       let revenue: number = 0;
 
-      kill
-        .getValue()
-        .then(value => {
-          revenue = value * kill.getWeight();
-          resolve(revenue);
-        })
+      kill.getValue().then(value => {
+        revenue = value * kill.getWeight();
+        resolve(revenue);
+      });
     });
   }
 }

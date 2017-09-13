@@ -17,10 +17,12 @@ describe('GameUnit type', () => {
   });
 
   test('revenue calculation', async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await expect(gameUnitInstance.calculateRevenue()).resolves.toBeDefined();
     await expect(gameUnitInstance.calculateRevenue()).resolves.not.toBeNaN();
-    await expect(gameUnitInstance.calculateRevenue()).resolves.toBeGreaterThanOrEqual(0);
+    await expect(
+      gameUnitInstance.calculateRevenue()
+    ).resolves.toBeGreaterThanOrEqual(0);
   });
 });
