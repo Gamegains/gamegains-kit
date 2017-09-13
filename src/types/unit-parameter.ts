@@ -25,7 +25,7 @@ export abstract class UnitParameter implements IUnitParameter {
   }
 
   public getId(): string {
-    return this.description;
+    return this.id;
   }
 
   public getWeight(): number {

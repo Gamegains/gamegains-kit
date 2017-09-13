@@ -5,4 +5,5 @@ export interface IGameUnit {
   getDescription(): string;
   getId(): string;
   getParameters(): IUnitParameter[];
+  calculateRevenue(): Promise<number>;
 }

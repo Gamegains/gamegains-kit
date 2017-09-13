@@ -25,7 +25,7 @@ export class LeagueOfLegends extends Game implements IGame {
     creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',
     distributorKey: '837EBP7nm4ynukGouqSE',
 
-    gameUnits: GameUnit.initUnits(Match),
+    gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
   };
 

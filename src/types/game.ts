@@ -5,6 +5,17 @@ import { AuthTypes } from '../enums';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
+  public static initType<T>(unitArray: any, ...units: T[]): T[] {
+    if (Array.isArray(unitArray)) {
+      return Game.initType.apply(this, unitArray);
+    }
+
+    const fullArray: T[] = units || [];
+    fullArray.unshift(unitArray);
+
+    return fullArray.map((typeInstance: any) => new typeInstance());
+  }
+
   private readonly name: string;
   private readonly description: string;
   private readonly id?: string;

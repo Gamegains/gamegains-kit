@@ -1,5 +1,5 @@
 import { Match } from '../examples/units';
-import { GameUnit } from '../src/types';
+import { Game, GameUnit } from '../src';
 
 const gameUnitInstance: GameUnit = new Match();
 
@@ -8,11 +8,11 @@ describe('GameUnit type', () => {
     expect(gameUnitInstance.getName()).toBe('Match');
     expect(gameUnitInstance.getDescription().length).toBeGreaterThan(0);
     expect(gameUnitInstance.getId()).toBe('match');
-    expect(gameUnitInstance.getParameters().length).toBe(0);
+    expect(gameUnitInstance.getParameters().length).toBeGreaterThan(0);
   });
 
   test('static methods', () => {
-    expect(GameUnit.initUnits(Match)[0]).toBeInstanceOf(GameUnit);
-    expect(GameUnit.initUnits([Match])[0]).toBeInstanceOf(GameUnit);
+    expect(Game.initType<GameUnit>(Match)[0]).toBeInstanceOf(GameUnit);
+    expect(Game.initType<GameUnit>([Match])[0]).toBeInstanceOf(GameUnit);
   });
 });

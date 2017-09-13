@@ -16,6 +16,6 @@ export class Kill extends UnitParameter implements IUnitParameter {
   }
 
   public getValue(): Promise<number> {
-    return Promise.resolve(12);
+    return Promise.resolve(Math.random() * Math.random() * 10);
   }
 }
