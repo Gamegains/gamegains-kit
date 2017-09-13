@@ -15,4 +15,12 @@ describe('GameUnit type', () => {
     expect(Game.initType<GameUnit>(Match)[0]).toBeInstanceOf(GameUnit);
     expect(Game.initType<GameUnit>([Match])[0]).toBeInstanceOf(GameUnit);
   });
+
+  test('revenue calculation', async () => {
+    expect.assertions(2);
+
+    await expect(gameUnitInstance.calculateRevenue()).resolves.toBeDefined();
+    await expect(gameUnitInstance.calculateRevenue()).resolves.not.toBeNaN();
+    await expect(gameUnitInstance.calculateRevenue()).resolves.toBeGreaterThanOrEqual(0);
+  });
 });
