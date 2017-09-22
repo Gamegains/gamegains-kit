@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
       "esnext"
     ],
-    "target": "ES5",
+    "target": "es5",
     "noImplicitAny": true,
     "outDir": "./lib",
     "preserveConstEnums": true,
@@ -17,7 +17,8 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/cli/**/*"
   ],
   "exclude": [
     "node_modules",

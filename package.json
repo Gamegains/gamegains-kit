@@ -26,10 +26,17 @@
     "watch": "npm run build -- --watch",
     "watch:test": "jest --watch"
   },
+  "bin": {
+    "gamegains": "./lib/cli/index.js",
+    "gg": "./lib/cli/index.js",
+    "ggk": "./lib/cli/index.js"
+  },
   "dependencies": {
+    "commander": "^2.11.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "@types/commander": "^2.9.2",
     "@types/jest": "^20.0.5",
     "@types/lodash": "^4.14.73",
     "@types/node": "^8.0.0",
