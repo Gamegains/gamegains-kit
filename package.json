@@ -32,6 +32,7 @@
     "ggk": "./lib/cli/index.js"
   },
   "dependencies": {
+    "clime": "^0.5.9",
     "commander": "^2.11.0",
     "lodash": "^4.17.4"
   },
