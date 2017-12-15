@@ -1,4 +1,4 @@
-import {Command, command, metadata} from 'clime';
+import { Command, command, metadata } from 'clime';
 
 @command()
 export default class extends Command {
