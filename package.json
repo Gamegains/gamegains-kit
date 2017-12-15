@@ -33,11 +33,9 @@
   },
   "dependencies": {
     "clime": "^0.5.9",
-    "commander": "^2.11.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "@types/commander": "^2.9.2",
     "@types/jest": "^20.0.5",
     "@types/lodash": "^4.14.73",
     "@types/node": "^8.0.0",
