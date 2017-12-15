@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
       "esnext"
     ],
-    "target": "es5",
+    "target": "es6",
     "noImplicitAny": true,
     "outDir": "./lib",
     "preserveConstEnums": true,
