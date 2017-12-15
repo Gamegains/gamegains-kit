@@ -27,9 +27,7 @@
     "watch:test": "jest --watch"
   },
   "bin": {
-    "gamegains": "./lib/cli/index.js",
-    "gg": "./lib/cli/index.js",
-    "ggk": "./lib/cli/index.js"
+    "gamegains": "./lib/cli/index.js"
   },
   "dependencies": {
     "clime": "^0.5.9",

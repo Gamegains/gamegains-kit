@@ -20,7 +20,7 @@
   },
   "include": [
     "src/**/*",
-    "src/cli/**/*"
+    "src/cli/**/*/*"
   ],
   "exclude": [
     "node_modules",

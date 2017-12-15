@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import * as cli from 'commander';
+import {CLI, Shim} from 'clime';
+import * as Path from 'path';
 
-cli
-  .version('0.0.1')
-  .option('-p --peppers', 'Add peppers')
-  .parse(process.argv);
+const cli = new CLI('gamegains', Path.join(__dirname, 'commands'));
+
+const shim = new Shim(cli);
+shim.execute(process.argv);
