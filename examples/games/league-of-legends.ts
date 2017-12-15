@@ -11,6 +11,8 @@ import {
 
 import { Match } from '../units';
 
+declare var Promise: any;
+
 export class LeagueOfLegends extends Game implements IGame {
   // noinspection TsLint
   private static readonly GAME_CONFIG: IGameConfig = {

@@ -1,9 +1,10 @@
 import { Command, command, metadata } from 'clime';
+import { GameDataContext } from '../contexts/game-data-context';
 
 @command()
 export default class extends Command {
   @metadata
-  public execute(): string {
-    return 'gamegains > create > game';
+  public execute(context: GameDataContext): Promise<object> {
+    return context.promptForData();
   }
 }
