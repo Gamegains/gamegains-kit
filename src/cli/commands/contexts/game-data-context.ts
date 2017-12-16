@@ -3,28 +3,50 @@ import * as Inquirer from 'inquirer';
 
 export class GameDataContext extends Context {
   // noinspection JSMethodCanBeStatic
-
   public promptForData(): Promise<object> {
+    const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
+    const filter = (answer: string) => answer.trim();
+
+    // noinspection TsLint
     return Inquirer.prompt([
       {
         message: 'Name of Game',
         name: 'name',
         type: 'input',
-        validate: answer => answer.length > 3,
+        filter,
+        validate: answer => answer.length > 3 && regex.test(answer),
       },
 
       {
         message: 'Game Description',
-        name: 'name',
+        name: 'description',
         type: 'input',
-        validate: answer => answer.length > 10,
+        filter,
+        validate: answer => answer.length > 10 && regex.test(answer),
       },
 
       {
-        message: 'Game Description',
-        name: 'name',
+        message: 'Are you a creator or distributor?',
+        choices: ['Creator', 'Distributor'],
+        name: 'account',
+        type: 'list',
+        filter: answer => answer.trim().toLowerCase(),
+      },
+
+      {
+        message: 'Creator/Distributor key?',
+        name: 'key',
         type: 'input',
-        validate: answer => answer.length > 10,
+        filter,
+        validate: answer => answer.length === 20,
+      },
+
+      {
+        message: 'Creator/Distributor secret?',
+        name: 'secret',
+        type: 'password',
+        filter,
+        validate: answer => answer.length === 40,
       },
     ]);
   }

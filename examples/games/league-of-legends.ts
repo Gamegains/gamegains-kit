@@ -23,12 +23,12 @@ export class LeagueOfLegends extends Game implements IGame {
       'online battle arena video game developed and published ' +
       'by Riot Games for Microsoft Windows and macOS.',
 
-    // Randomly generated with https://www.random.org
-    creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',
-    creatorSecret: '0zZK05WYevPGh!uGcaS#9v2b09%7ZI2Tgucrh$Hu*4tfjmIu#E',
+    // Randomly generated with LastPass
+    creatorKey: 'vtLF993sVqHFHN6W9z5c',
+    creatorSecret: 'M690prZo8nguTUuOAQygr52wSMvcwKO91lg9LsvU',
 
-    distributorKey: '837EBP7nm4ynukGouqSE',
-    distributorSecret: 'b7CZSAwgdWVM@Az8h81Vfy1MkyVBi$zbQLm*TJik16%oRNL*vd',
+    distributorKey: '3hZsWXNgC3g0bwd8tsFl',
+    distributorSecret: 'oG56argjgI8ze0S5eb7UG2hwf1mW1vmPnaHIXdGU',
 
     gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
