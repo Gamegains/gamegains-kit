@@ -9,8 +9,10 @@ describe('Game type', () => {
     expect(gameInstance.getName()).toBe('League of Legends');
     expect(gameInstance.getDescription().length).toBeGreaterThan(0);
     expect(gameInstance.getId()).toBe('league-of-legends');
-    expect(gameInstance.getCreatorKey().length).toBeGreaterThanOrEqual(20);
-    expect(gameInstance.getDistributorKey().length).toBeGreaterThanOrEqual(20);
+    expect(gameInstance.getCreatorKey().length).toEqual(20);
+    expect(gameInstance.getCreatorSecret().length).toEqual(40);
+    expect(gameInstance.getDistributorKey().length).toEqual(20);
+    expect(gameInstance.getDistributorSecret().length).toEqual(40);
     expect(gameInstance.getAuthTypes().length).not.toBe(0);
     expect(gameInstance.getGameUnits().length).toBe(1);
     expect(gameInstance.getGameUnits()[0]).toBeInstanceOf(GameUnit);

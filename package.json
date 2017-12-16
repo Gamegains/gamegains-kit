@@ -32,7 +32,9 @@
   "dependencies": {
     "clime": "^0.5.9",
     "inquirer": "^4.0.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mustache": "^2.3.0",
+    "scaffold-generator": "^2.0.3"
   },
   "devDependencies": {
     "@types/inquirer": "^0.0.36",

@@ -38,7 +38,7 @@ export abstract class Game implements IGame {
     this.id = settings.id || kebabCase(settings.name);
 
     this.creatorKey = settings.creatorKey || settings.distributorKey;
-    this.creatorSecret = settings.creatorKey || settings.distributorKey;
+    this.creatorSecret = settings.creatorSecret || settings.distributorSecret;
     this.distributorKey = this.distributorKey || settings.creatorKey;
     this.distributorSecret = this.distributorSecret || settings.creatorSecret;
 
