@@ -6,7 +6,9 @@ export interface IGameConfig {
   description: string;
   id?: string;
   creatorKey: string;
+  creatorSecret: string;
   distributorKey: string;
+  distributorSecret: string;
   logo?: string;
   gameUnits: GameUnit[];
   authTypes: AuthTypes[];

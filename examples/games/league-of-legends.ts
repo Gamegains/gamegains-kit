@@ -25,7 +25,10 @@ export class LeagueOfLegends extends Game implements IGame {
 
     // Randomly generated with https://www.random.org
     creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',
+    creatorSecret: 'ZV1eOrQ8VzbcT7pOfryh',
+
     distributorKey: '837EBP7nm4ynukGouqSE',
+    distributorSecret: '837EBP7nm4ynukGouqSE',
 
     gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
