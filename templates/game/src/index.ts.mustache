@@ -7,14 +7,13 @@ import {
   IAuthResult,
   IGame,
   IGameConfig,
-} from 'gamegains-kit';
+} from '@gamegains/kit';
 
 declare var Promise: any;
 
 export default class {{className}} extends Game implements IGame {
   private static readonly GAME_CONFIG: IGameConfig = {
     name: `{{name}}`,
-
     description: `{{description}}`,
 
     developerKey: '{{developerKey}}',

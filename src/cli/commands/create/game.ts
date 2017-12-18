@@ -1,12 +1,15 @@
 import { Command, command, metadata } from 'clime';
+import { renameSync } from 'fs';
 import { Answers } from 'inquirer';
-import { camelCase, kebabCase, upperFirst } from 'lodash';
+import { camelCase, endsWith, kebabCase, upperFirst } from 'lodash';
 import { render } from 'mustache';
 import * as Path from 'path';
+import * as recursiveReaddir from 'recursive-readdir';
 import * as Scaffold from 'scaffold-generator';
-import { IGameConfig } from '../../../interfaces';
+import { promisify } from 'util';
 import { GameDataContext } from '../contexts/game-data-context';
 
+const readdir: any = promisify(recursiveReaddir);
 const path = Path.resolve(__dirname, '../../../../templates/game');
 
 @command()
@@ -18,13 +21,14 @@ export default class extends Command {
     await new Scaffold({
       data: {
         className: upperFirst(camelCase(gameData.name)),
-        packageName: 'gg-' + kebabCase(gameData.name),
+        packageName: `gamegains-${kebabCase(gameData.name)}`,
         ...gameData,
       },
       render,
     }).copy(path, context.cwd);
 
-    // noinspection TsLint
-    console.log('Copying done.');
+    const files = await (readdir(context.cwd) as string[])
+      .filter(file => endsWith(file, '.mustache'))
+      .forEach(file => renameSync(file, file.replace('.mustache', '')));
   }
 }
