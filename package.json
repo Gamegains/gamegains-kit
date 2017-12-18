@@ -40,6 +40,7 @@
     "@types/inquirer": "^0.0.36",
     "@types/jest": "^20.0.5",
     "@types/lodash": "^4.14.73",
+    "@types/mustache": "^0.8.30",
     "@types/node": "^8.0.0",
     "coveralls": "^2.0.0",
     "jest": "^20.0.4",

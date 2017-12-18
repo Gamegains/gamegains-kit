@@ -9,7 +9,7 @@
       "esnext"
     ],
     "target": "es6",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": true,
@@ -19,8 +19,7 @@
     ]
   },
   "include": [
-    "src/**/*",
-    "src/cli/**/*/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

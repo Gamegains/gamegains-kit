@@ -3,7 +3,7 @@ import * as Inquirer from 'inquirer';
 
 export class GameDataContext extends Context {
   // noinspection JSMethodCanBeStatic
-  public promptForData(): Promise<object> {
+  public promptForData(): Promise<Inquirer.Answers> {
     const regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
     const filter = (answer: string) => answer.trim();
 
