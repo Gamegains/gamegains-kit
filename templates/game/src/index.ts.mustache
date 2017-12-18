@@ -1,0 +1,38 @@
+import {
+  AuthCode,
+  AuthResult,
+  AuthTypes,
+  Game,
+  GameUnit,
+  IAuthResult,
+  IGame,
+  IGameConfig,
+} from 'gamegains-kit';
+
+declare var Promise: any;
+
+export default class {{className}} extends Game implements IGame {
+  private static readonly GAME_CONFIG: IGameConfig = {
+    name: `{{name}}`,
+
+    description: `{{description}}`,
+
+    developerKey: '{{developerKey}}',
+    developerSecret: '{{developerSecret}}',
+
+    gameUnits: [],
+    authTypes: [],
+  };
+
+  constructor() {
+    super({{className}}.GAME_CONFIG);
+  }
+
+  protected authenticateWithLogin(): Promise{{'<IAuthResult>'}} {
+    return AuthResult.METHOD_NOT_IMPLEMENTED;
+  }
+
+  protected authenticateWithCode(): Promise{{'<IAuthResult>'}} {
+    return AuthResult.METHOD_NOT_IMPLEMENTED;
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "test",
-  "version": "0.0.0",
-  "description": "test",
+  "name": "{{packageName}}",
+  "version": "0.0.1",
+  "description": "{{description}}",
   "license": "MIT",
   "repository": "",
   "author": {
@@ -50,7 +50,7 @@
   },
   "jest": {
     "transform": {
-      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".(ts)": "{{'<rootDir>'}}/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
     "moduleFileExtensions": [
