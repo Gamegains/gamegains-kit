@@ -26,7 +26,7 @@ export class GameDataContext extends Context {
       },
 
       {
-        message: 'Developer key',
+        message: 'Developer Key',
         name: 'developerKey',
         type: 'input',
         filter,
@@ -34,7 +34,7 @@ export class GameDataContext extends Context {
       },
 
       {
-        message: 'Developer secret',
+        message: 'Developer Secret',
         name: 'developerSecret',
         type: 'password',
         filter,
