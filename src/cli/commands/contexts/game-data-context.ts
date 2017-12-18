@@ -26,24 +26,16 @@ export class GameDataContext extends Context {
       },
 
       {
-        message: 'Are you a creator or distributor?',
-        choices: ['Creator', 'Distributor'],
-        name: 'account',
-        type: 'list',
-        filter: answer => answer.trim().toLowerCase(),
-      },
-
-      {
-        message: 'Creator/Distributor key?',
-        name: 'key',
+        message: 'Developer key',
+        name: 'developerKey',
         type: 'input',
         filter,
         validate: answer => answer.length === 20,
       },
 
       {
-        message: 'Creator/Distributor secret?',
-        name: 'secret',
+        message: 'Developer secret',
+        name: 'developerSecret',
         type: 'password',
         filter,
         validate: answer => answer.length === 40,

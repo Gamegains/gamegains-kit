@@ -19,10 +19,8 @@ export abstract class Game implements IGame {
   private readonly name: string;
   private readonly description: string;
   private readonly id?: string;
-  private readonly creatorKey: string;
-  private readonly creatorSecret: string;
-  private readonly distributorKey: string;
-  private readonly distributorSecret: string;
+  private readonly developerKey: string;
+  private readonly developerSecret: string;
   private readonly gameUnits: GameUnit[];
   private readonly authTypes: AuthTypes[];
 
@@ -33,14 +31,12 @@ export abstract class Game implements IGame {
   constructor(settings: IGameConfig) {
     this.name = settings.name;
     this.description = settings.description;
-    this.creatorKey = settings.creatorKey;
+    this.developerKey = settings.developerKey;
 
     this.id = settings.id || kebabCase(settings.name);
 
-    this.creatorKey = settings.creatorKey || settings.distributorKey;
-    this.creatorSecret = settings.creatorSecret || settings.distributorSecret;
-    this.distributorKey = this.distributorKey || settings.creatorKey;
-    this.distributorSecret = this.distributorSecret || settings.creatorSecret;
+    this.developerKey = settings.developerKey;
+    this.developerSecret = settings.developerSecret;
 
     this.gameUnits = settings.gameUnits || [];
     this.authTypes = settings.authTypes || [];
@@ -60,20 +56,12 @@ export abstract class Game implements IGame {
     return this.id;
   }
 
-  public getCreatorKey(): string {
-    return this.creatorKey;
+  public getDeveloperKey(): string {
+    return this.developerKey;
   }
 
-  public getCreatorSecret(): string {
-    return this.creatorSecret;
-  }
-
-  public getDistributorKey(): string {
-    return this.distributorKey;
-  }
-
-  public getDistributorSecret(): string {
-    return this.distributorSecret;
+  public getDeveloperSecret(): string {
+    return this.developerSecret;
   }
 
   public getGameUnits(): GameUnit[] {

@@ -5,10 +5,8 @@ export interface IGameConfig {
   name: string;
   description: string;
   id?: string;
-  creatorKey: string;
-  creatorSecret: string;
-  distributorKey: string;
-  distributorSecret: string;
+  developerKey: string;
+  developerSecret: string;
   logo?: string;
   gameUnits: GameUnit[];
   authTypes: AuthTypes[];

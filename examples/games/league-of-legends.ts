@@ -14,7 +14,6 @@ import { Match } from '../units';
 declare var Promise: any;
 
 export class LeagueOfLegends extends Game implements IGame {
-  // noinspection TsLint
   private static readonly GAME_CONFIG: IGameConfig = {
     name: 'League of Legends',
 
@@ -24,11 +23,8 @@ export class LeagueOfLegends extends Game implements IGame {
       'by Riot Games for Microsoft Windows and macOS.',
 
     // Randomly generated with LastPass
-    creatorKey: 'vtLF993sVqHFHN6W9z5c',
-    creatorSecret: 'M690prZo8nguTUuOAQygr52wSMvcwKO91lg9LsvU',
-
-    distributorKey: '3hZsWXNgC3g0bwd8tsFl',
-    distributorSecret: 'oG56argjgI8ze0S5eb7UG2hwf1mW1vmPnaHIXdGU',
+    developerKey: 'vtLF993sVqHFHN6W9z5c',
+    developerSecret: 'M690prZo8nguTUuOAQygr52wSMvcwKO91lg9LsvU',
 
     gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
