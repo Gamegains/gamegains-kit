@@ -3,24 +3,19 @@ import { Answers } from 'inquirer';
 import { render } from 'mustache';
 import * as Path from 'path';
 import * as Scaffold from 'scaffold-generator';
+import { AuthTypes } from '../../../index';
 import { IGameConfig } from '../../../interfaces';
 import { GameDataContext } from '../contexts/game-data-context';
-import {AuthTypes, Game, GameUnit} from "../../../index";
-import {Match} from "../../../../examples/units";
 
 const path = Path.resolve(__dirname, '../../../../templates/game');
 
 @command()
 export default class extends Command {
-  private isCreator(account) {
-    return account === 'creator';
-  }
-
   @metadata
   public async execute(context: GameDataContext): Promise<any> {
     const gameData: Answers = await context.promptForData();
 
-    const {account, key, secret} = gameData;
+    const { account, key, secret } = gameData;
 
     // noinspection TsLint
     const gameConfig: IGameConfig = {
@@ -53,5 +48,9 @@ export default class extends Command {
     //
     // // noinspection TsLint
     // console.log('Copying done.');
+  }
+
+  private isCreator(account) {
+    return account === 'creator';
   }
 }
