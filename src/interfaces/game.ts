@@ -10,5 +10,5 @@ export interface IGame {
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
-  authenticate(): void;
+  authenticate(): Promise<IAuthResult | IAuthCode>;
 }
