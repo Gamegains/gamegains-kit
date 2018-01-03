@@ -41,9 +41,10 @@ export default class extends Command {
       .filter(file => endsWith(file, '.mustache'))
       .forEach(file => renameSync(file, file.replace('.mustache', '')));
 
-    const packageInstaller = spawn('yarn || npm install', [], {
+    const packageInstaller = spawn('npm', ['install'], {
       cwd: context.cwd,
     });
+
     packageInstaller.on('exit', (code, signal) => {
       spinner.succeed('Done installing required packages');
     });
