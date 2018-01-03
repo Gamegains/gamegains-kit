@@ -5,7 +5,7 @@ import {
   IGameUnitConfig,
   UnitParameter,
 } from '../../src';
-import { Kill } from '../unit-parameters/kill';
+import { Kill } from '../unit-parameters';
 
 export class Match extends GameUnit implements IGameUnit {
   // noinspection TsLint
