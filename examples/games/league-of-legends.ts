@@ -11,8 +11,9 @@ import {
 
 import { Match } from '../units';
 
+declare var Promise: any;
+
 export class LeagueOfLegends extends Game implements IGame {
-  // noinspection TsLint
   private static readonly GAME_CONFIG: IGameConfig = {
     name: 'League of Legends',
 
@@ -21,9 +22,9 @@ export class LeagueOfLegends extends Game implements IGame {
       'online battle arena video game developed and published ' +
       'by Riot Games for Microsoft Windows and macOS.',
 
-    // Randomly generated with https://www.random.org
-    creatorKey: 'ZV1eOrQ8VzbcT7pOfryh',
-    distributorKey: '837EBP7nm4ynukGouqSE',
+    // Randomly generated with LastPass
+    developerKey: 'vtLF993sVqHFHN6W9z5c',
+    developerSecret: 'M690prZo8nguTUuOAQygr52wSMvcwKO91lg9LsvU',
 
     gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],

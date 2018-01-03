@@ -6,10 +6,9 @@ export interface IGame {
   getName(): string;
   getDescription(): string;
   getId(): string;
-  getCreatorKey(): string;
-  getDistributorKey(): string;
+  getDeveloperKey(): string;
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
-  authenticate(): void;
+  authenticate(): Promise<IAuthResult | IAuthCode>;
 }
