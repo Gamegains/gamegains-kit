@@ -1,7 +1,8 @@
-import { IAuthCode, IAuthResult, IGame, IGameConfig } from '../interfaces';
+import { IAuthResult, IGame, IGameConfig } from '../interfaces';
 
 import { kebabCase } from 'lodash';
 import { AuthTypes } from '../enums';
+import { Field } from './field';
 import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
@@ -23,6 +24,7 @@ export abstract class Game implements IGame {
   private readonly developerSecret: string;
   private readonly gameUnits: GameUnit[];
   private readonly authTypes: AuthTypes[];
+  private readonly verificationFields: Field[];
 
   private logo?: string;
 
@@ -40,6 +42,8 @@ export abstract class Game implements IGame {
 
     this.gameUnits = settings.gameUnits || [];
     this.authTypes = settings.authTypes || [];
+
+    this.verificationFields = settings.verificationFields || [];
 
     this.defaultAuthOption = this.authTypes[0];
   }
@@ -72,6 +76,10 @@ export abstract class Game implements IGame {
     return this.authTypes;
   }
 
+  public getAuthFields(): Field[] {
+    return this.verificationFields;
+  }
+
   public getLogo(): string {
     return this.logo;
   }
@@ -86,18 +94,17 @@ export abstract class Game implements IGame {
     this.authTypes.unshift(1);
   }
 
-  public authenticate(
-    authType: AuthTypes = this.getDefaultAuthType()
-  ): Promise<IAuthResult | IAuthCode> {
-    switch (authType) {
-      case AuthTypes.LOGIN:
-        return this.authenticateWithLogin();
-      case AuthTypes.CODE:
-        return this.authenticateWithCode();
-    }
+  public getFieldValue(id: string): string {
+    return this.getFieldById(id).getValue();
   }
 
-  protected abstract authenticateWithLogin(): Promise<IAuthResult>;
+  public setFieldValue(id: string, value: string): void {
+    this.getFieldById(id).setValue(value);
+  }
 
-  protected abstract authenticateWithCode(): Promise<IAuthResult>;
+  public abstract verifyPlayer(): Promise<IAuthResult>;
+
+  private getFieldById(id: string): Field {
+    return this.verificationFields.find(field => field.getId() === id);
+  }
 }

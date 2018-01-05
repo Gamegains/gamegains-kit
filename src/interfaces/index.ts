@@ -6,3 +6,4 @@ export * from './game-unit';
 export * from './game-unit-config';
 export * from './unit-parameter';
 export * from './unit-parameter-config';
+export * from './field';

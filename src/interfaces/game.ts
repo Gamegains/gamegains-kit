@@ -1,5 +1,5 @@
 import { AuthTypes } from '../enums';
-import { IAuthCode, IAuthResult } from '../interfaces';
+import { IAuthResult } from '../interfaces';
 import { GameUnit } from '../types';
 
 export interface IGame {
@@ -10,5 +10,5 @@ export interface IGame {
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
-  authenticate(): Promise<IAuthResult | IAuthCode>;
+  verifyPlayer(): Promise<IAuthResult>;
 }
