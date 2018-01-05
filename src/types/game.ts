@@ -76,7 +76,7 @@ export abstract class Game implements IGame {
     return this.authTypes;
   }
 
-  public getAuthFields(): Field[] {
+  public getVerificationFields(): Field[] {
     return this.verificationFields;
   }
 
