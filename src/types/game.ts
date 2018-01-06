@@ -117,7 +117,7 @@ export abstract class Game implements IGame {
     const fields = this.requiredFields.concat(this.verificationFields);
     return chain(fields)
       .uniqBy(Field.byId)
-      .find(Field.byId)
+      .find((field: Field)=> field.getId() === id)
       .value() as Field;
   }
 }
