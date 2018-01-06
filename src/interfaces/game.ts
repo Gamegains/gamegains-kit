@@ -10,6 +10,7 @@ export interface IGame {
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
+  getRequiredFields(): Field[];
   getVerificationFields(): Field[];
   verifyPlayer(): Promise<IAuthResult>;
 }

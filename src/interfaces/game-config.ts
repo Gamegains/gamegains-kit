@@ -10,5 +10,6 @@ export interface IGameConfig {
   logo?: string;
   gameUnits: GameUnit[];
   authTypes: AuthTypes[];
+  requiredFields: Field[];
   verificationFields: Field[];
 }

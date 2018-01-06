@@ -1,6 +1,6 @@
 import { IAuthResult, IGame, IGameConfig } from '../interfaces';
 
-import { kebabCase } from 'lodash';
+import { chain, find, kebabCase, uniqBy } from 'lodash';
 import { AuthTypes } from '../enums';
 import { Field } from './field';
 import { GameUnit } from './game-unit';
@@ -20,15 +20,16 @@ export abstract class Game implements IGame {
   private readonly name: string;
   private readonly description: string;
   private readonly id?: string;
+  private readonly logo?: string;
   private readonly developerKey: string;
   private readonly developerSecret: string;
   private readonly gameUnits: GameUnit[];
-  private readonly authTypes: AuthTypes[];
-  private readonly verificationFields: Field[];
-
-  private logo?: string;
 
   private defaultAuthOption: AuthTypes;
+  private readonly authTypes: AuthTypes[];
+
+  private readonly requiredFields: Field[];
+  private readonly verificationFields: Field[];
 
   constructor(settings: IGameConfig) {
     this.name = settings.name;
@@ -43,7 +44,10 @@ export abstract class Game implements IGame {
     this.gameUnits = settings.gameUnits || [];
     this.authTypes = settings.authTypes || [];
 
-    this.verificationFields = settings.verificationFields || [];
+    this.requiredFields =
+      (uniqBy(settings.requiredFields, Field.byId) as Field[]) || [];
+    this.verificationFields =
+      (uniqBy(settings.verificationFields, Field.byId) as Field[]) || [];
 
     this.defaultAuthOption = this.authTypes[0];
   }
@@ -60,6 +64,10 @@ export abstract class Game implements IGame {
     return this.id;
   }
 
+  public getLogo(): string {
+    return this.logo;
+  }
+
   public getDeveloperKey(): string {
     return this.developerKey;
   }
@@ -72,16 +80,9 @@ export abstract class Game implements IGame {
     return this.gameUnits;
   }
 
+  // TODO: Check necessity of AuthTypes
   public getAuthTypes(): AuthTypes[] {
     return this.authTypes;
-  }
-
-  public getVerificationFields(): Field[] {
-    return this.verificationFields;
-  }
-
-  public getLogo(): string {
-    return this.logo;
   }
 
   public getDefaultAuthType(): AuthTypes {
@@ -92,6 +93,14 @@ export abstract class Game implements IGame {
     const index = this.authTypes.indexOf(type);
     this.authTypes.splice(index, 1);
     this.authTypes.unshift(1);
+  }
+
+  public getRequiredFields(): Field[] {
+    return this.requiredFields;
+  }
+
+  public getVerificationFields(): Field[] {
+    return this.verificationFields;
   }
 
   public getFieldValue(id: string): string {
@@ -105,6 +114,10 @@ export abstract class Game implements IGame {
   public abstract verifyPlayer(): Promise<IAuthResult>;
 
   private getFieldById(id: string): Field {
-    return this.verificationFields.find(field => field.getId() === id);
+    const fields = this.requiredFields.concat(this.verificationFields);
+    return chain(fields)
+      .uniqBy(Field.byId)
+      .find(Field.byId)
+      .value() as Field;
   }
 }
