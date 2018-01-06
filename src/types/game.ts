@@ -46,8 +46,8 @@ export abstract class Game implements IGame {
 
     this.requiredFields =
       (uniqBy(settings.requiredFields, Field.byId) as Field[]) || [];
-    this.verificationFields =
-      (uniqBy(settings.verificationFields, Field.byId) as Field[]) || [];
+
+    this.verificationFields = [];
 
     this.defaultAuthOption = this.authTypes[0];
   }
@@ -111,13 +111,15 @@ export abstract class Game implements IGame {
     this.getFieldById(id).setValue(value);
   }
 
+  public abstract generateVerificationFields(): void;
+
   public abstract verifyPlayer(): Promise<IAuthResult>;
 
   private getFieldById(id: string): Field {
     const fields = this.requiredFields.concat(this.verificationFields);
     return chain(fields)
       .uniqBy(Field.byId)
-      .find((field: Field)=> field.getId() === id)
+      .find((field: Field) => field.getId() === id)
       .value() as Field;
   }
 }
