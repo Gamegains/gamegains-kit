@@ -11,5 +11,5 @@ export interface IGameConfig {
   gameUnits: GameUnit[];
   authTypes: AuthTypes[];
   requiredFields: Field[];
-  verificationFields: Field[];
+  verificationFields?: Field[];
 }

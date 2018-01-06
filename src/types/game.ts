@@ -111,7 +111,7 @@ export abstract class Game implements IGame {
     this.getFieldById(id).setValue(value);
   }
 
-  public abstract generateVerificationFields(): void;
+  public abstract generateVerificationValues(): void;
 
   public abstract verifyPlayer(): Promise<IAuthResult>;
 
