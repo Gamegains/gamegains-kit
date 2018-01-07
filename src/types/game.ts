@@ -1,12 +1,12 @@
-import { IAuthResult, IGame, IGameConfig } from '../interfaces';
+import {IAuthResult, IGame, IGameConfig} from '../interfaces';
 
-import { chain, find, kebabCase, uniqBy } from 'lodash';
-import { AuthTypes } from '../enums';
-import { Field } from './field';
-import { GameUnit } from './game-unit';
+import {chain, kebabCase, uniqBy} from 'lodash';
+import {AuthTypes} from '../enums';
+import {Field} from './field';
+import {GameUnit} from './game-unit';
 
 export abstract class Game implements IGame {
-  protected static initType<T>(unitArray: any, ...units: T[]): T[] {
+  public static initType<T>(unitArray: any, ...units: T[]): T[] {
     if (Array.isArray(unitArray)) {
       return Game.initType.apply(this, unitArray);
     }
