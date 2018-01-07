@@ -1,5 +1,5 @@
 import { AuthTypes } from '../enums';
-import { GameUnit } from '../types/game-unit';
+import { Field, GameUnit } from '../types';
 
 export interface IGameConfig {
   name: string;
@@ -10,4 +10,7 @@ export interface IGameConfig {
   logo?: string;
   gameUnits: GameUnit[];
   authTypes: AuthTypes[];
+  requiredFields: Field[];
+  dataFields?: Field[];
+  verificationFields?: Field[];
 }
