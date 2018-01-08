@@ -1,4 +1,4 @@
-import {IField} from '../interfaces';
+import { IField } from '../interfaces';
 
 export class Field implements IField {
   public static byId(field: IField | Field): string {

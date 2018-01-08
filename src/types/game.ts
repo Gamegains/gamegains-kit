@@ -1,11 +1,11 @@
-import {IAuthResult, IField, IGame, IGameConfig} from '../interfaces';
+import { IAuthResult, IField, IGame, IGameConfig } from '../interfaces';
 
-import {chain, kebabCase, uniqBy} from 'lodash';
+import { chain, kebabCase, uniqBy } from 'lodash';
 import * as React from 'react';
-import {AuthTypes} from '../enums';
-import {Instructions, withGame} from '../views';
-import {Field} from './field';
-import {GameUnit} from './game-unit';
+import { AuthTypes } from '../enums';
+import { Instructions, withGame } from '../views';
+import { Field } from './field';
+import { GameUnit } from './game-unit';
 
 export abstract class Game implements IGame {
   public static initType<T>(unitArray: any, ...units: T[]): T[] {
