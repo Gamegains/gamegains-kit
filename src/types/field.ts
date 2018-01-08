@@ -1,4 +1,4 @@
-import { IField } from '../interfaces';
+import {IField} from '../interfaces';
 
 export class Field implements IField {
   public static byId(field: IField | Field): string {
@@ -15,19 +15,19 @@ export class Field implements IField {
     this.displayName = displayName;
   }
 
-  public getId() {
+  public getId(): string {
     return this.id;
   }
 
-  public getDisplayName() {
+  public getDisplayName(): string {
     return this.displayName;
   }
 
-  public getValue() {
+  public getValue(): string {
     return this.value;
   }
 
-  public setValue(value: string) {
+  public setValue(value: string): void {
     this.value = value;
   }
 }

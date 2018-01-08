@@ -1,6 +1,6 @@
-import { AuthTypes } from '../enums';
-import { IAuthResult } from '../interfaces';
-import { Field, GameUnit } from '../types';
+import {AuthTypes} from '../enums';
+import {IAuthResult, IField} from '../interfaces';
+import {GameUnit} from '../types';
 
 export interface IGame {
   getName(): string;
@@ -10,9 +10,10 @@ export interface IGame {
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
-  getRequiredFields(): Field[];
-  getDataFields(): Field[];
-  getVerificationFields(): Field[];
+  getInstructionMessage(): string;
+  getRequiredFields(): IField[];
+  getDataFields(): IField[];
+  getVerificationFields(): IField[];
   generateVerificationValues(): Promise<void>;
   verifyPlayer(): Promise<IAuthResult>;
 }

@@ -1,7 +1,9 @@
-import {IAuthResult, IGame, IGameConfig} from '../interfaces';
+import {IAuthResult, IField, IGame, IGameConfig} from '../interfaces';
 
 import {chain, kebabCase, uniqBy} from 'lodash';
+import * as React from 'react';
 import {AuthTypes} from '../enums';
+import {Instructions, withGame} from '../views';
 import {Field} from './field';
 import {GameUnit} from './game-unit';
 
@@ -30,11 +32,14 @@ export abstract class Game implements IGame {
   private readonly gameUnits: GameUnit[];
 
   private defaultAuthOption: AuthTypes;
-  private readonly authTypes: AuthTypes[];
 
-  private readonly requiredFields: Field[];
-  private readonly dataFields: Field[];
-  private readonly verificationFields: Field[];
+  private readonly instructionMessage: string;
+
+  private readonly authTypes: AuthTypes[];
+  private readonly requiredFields: IField[];
+  private readonly dataFields: IField[];
+
+  private readonly verificationFields: IField[];
 
   constructor(settings: IGameConfig) {
     this.name = settings.name;
@@ -99,15 +104,23 @@ export abstract class Game implements IGame {
     this.authTypes.unshift(1);
   }
 
-  public getRequiredFields(): Field[] {
+  public getInstructionMessage(): string {
+    return this.instructionMessage;
+  }
+
+  public getInstructions(): React.PureComponent {
+    return withGame(this)(Instructions);
+  }
+
+  public getRequiredFields(): IField[] {
     return this.requiredFields;
   }
 
-  public getDataFields(): Field[] {
+  public getDataFields(): IField[] {
     return this.dataFields;
   }
 
-  public getVerificationFields(): Field[] {
+  public getVerificationFields(): IField[] {
     return this.verificationFields;
   }
 
@@ -123,7 +136,7 @@ export abstract class Game implements IGame {
 
   public abstract verifyPlayer(): Promise<IAuthResult>;
 
-  private getFieldById(id: string): Field {
+  private getFieldById(id: string): IField {
     const fields = this.requiredFields
       .concat(this.dataFields)
       .concat(this.verificationFields);
