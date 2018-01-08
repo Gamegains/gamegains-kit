@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {AuthTypes} from '../enums';
 import {IAuthResult, IField} from '../interfaces';
 import {GameUnit} from '../types';
@@ -11,6 +12,7 @@ export interface IGame {
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
   getInstructionMessage(): string;
+  getInstructions(): React.PureComponent | React.Component;
   getRequiredFields(): IField[];
   getDataFields(): IField[];
   getVerificationFields(): IField[];

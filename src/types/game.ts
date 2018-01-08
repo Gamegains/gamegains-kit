@@ -108,7 +108,7 @@ export abstract class Game implements IGame {
     return this.instructionMessage;
   }
 
-  public getInstructions(): React.PureComponent {
+  public getInstructions(): React.PureComponent | React.Component {
     return withGame(this)(Instructions);
   }
 
