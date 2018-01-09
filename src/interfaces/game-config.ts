@@ -1,5 +1,5 @@
-import {AuthTypes} from '../enums';
-import {Field, GameUnit} from '../types';
+import { AuthTypes } from '../enums';
+import { Field, GameUnit } from '../types';
 
 export interface IGameConfig {
   name: string;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {AuthTypes} from '../enums';
-import {IAuthResult, IField} from '../interfaces';
-import {GameUnit} from '../types';
+import { AuthTypes } from '../enums';
+import { IAuthResult, IField } from '../interfaces';
+import { GameUnit } from '../types';
 
 export interface IGame {
   getName(): string;
