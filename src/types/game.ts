@@ -1,11 +1,11 @@
-import { IAuthResult, IField, IGame, IGameConfig } from '../interfaces';
+import {IAuthResult, IField, IGame, IGameConfig} from '../interfaces';
 
-import { chain, kebabCase, uniqBy } from 'lodash';
+import {camelCase, chain, kebabCase, uniqBy} from 'lodash';
 import * as React from 'react';
-import { AuthTypes } from '../enums';
-import { Instructions, withGame } from '../views';
-import { Field } from './field';
-import { GameUnit } from './game-unit';
+import {AuthTypes} from '../enums';
+import {Instructions, withGame} from '../views';
+import {Field} from './field';
+import {GameUnit} from './game-unit';
 
 export abstract class Game implements IGame {
   public static initType<T>(unitArray: any, ...units: T[]): T[] {
@@ -26,6 +26,7 @@ export abstract class Game implements IGame {
   private readonly name: string;
   private readonly description: string;
   private readonly id?: string;
+  private readonly databaseId?: string;
   private readonly logo?: string;
   private readonly developerKey: string;
   private readonly developerSecret: string;
@@ -47,6 +48,7 @@ export abstract class Game implements IGame {
     this.developerKey = settings.developerKey;
 
     this.id = settings.id || kebabCase(settings.name);
+    this.databaseId = settings.databaseId || camelCase(settings.name);
 
     this.developerKey = settings.developerKey;
     this.developerSecret = settings.developerSecret;
@@ -71,6 +73,10 @@ export abstract class Game implements IGame {
 
   public getId(): string {
     return this.id;
+  }
+
+  public getDatabaseId(): string {
+    return this.databaseId;
   }
 
   public getLogo(): string {
