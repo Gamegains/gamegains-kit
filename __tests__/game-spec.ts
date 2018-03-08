@@ -18,17 +18,17 @@ describe('Game type', () => {
     expect(gameInstance.getLogo()).toBeUndefined();
   });
 
-  test('authentication methods', async () => {
-    expect.assertions(2);
+  // test('authentication methods', async () => {
+  //   expect.assertions(2);
 
-    await expect(
-      gameInstance.authenticate(AuthTypes.LOGIN)
-    ).rejects.toHaveProperty('status');
+  //   await expect(
+  //     gameInstance.authenticate(AuthTypes.LOGIN)
+  //   ).rejects.toHaveProperty('status');
 
-    await expect(
-      gameInstance.authenticate(AuthTypes.CODE)
-    ).resolves.toBeInstanceOf(AuthCode);
-  });
+  //   await expect(
+  //     gameInstance.authenticate(AuthTypes.CODE)
+  //   ).resolves.toBeInstanceOf(AuthCode);
+  // });
 
   test('AuthType methods', () => {
     expect(gameInstance.getDefaultAuthType()).toBe(AuthTypes.LOGIN);
