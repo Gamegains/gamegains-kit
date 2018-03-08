@@ -12,8 +12,8 @@ export interface IGame {
   getGameUnits(): GameUnit[];
   getAuthTypes(): AuthTypes[];
   getLogo(): string;
-  getInstructionMessage(): string;
-  getInstructions(): React.PureComponent | React.Component;
+  // getInstructionMessage(): string;
+  // getInstructions(): React.PureComponent | React.Component;
   getRequiredFields(): IField[];
   getDataFields(): IField[];
   getVerificationFields(): IField[];

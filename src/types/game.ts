@@ -34,7 +34,7 @@ export abstract class Game implements IGame {
 
   private defaultAuthOption: AuthTypes;
 
-  private readonly instructionMessage: string;
+  // private readonly instructionMessage: string;
 
   private readonly authTypes: AuthTypes[];
   private readonly requiredFields: IField[];
@@ -111,9 +111,9 @@ export abstract class Game implements IGame {
     this.authTypes.unshift(1);
   }
 
-  public getInstructionMessage(): string {
-    return this.instructionMessage;
-  }
+  // public getInstructionMessage(): string {
+  //   return this.instructionMessage;
+  // }
 
   // public getInstructions(): React.PureComponent | React.Component {
   //   return withGame(this)(Instructions);

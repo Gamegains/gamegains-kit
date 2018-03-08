@@ -5,12 +5,12 @@ export interface IInstructionsProps {
   game: IGame
 }
 
-export class Instructions extends React.PureComponent<IInstructionsProps, {}> {
-  public render() {
-    const {game} = this.props;
+// export class Instructions extends React.PureComponent<IInstructionsProps, {}> {
+//   public render() {
+//     const {game} = this.props;
 
-    return (
-      <p>{game.getInstructionMessage()}</p>
-    );
-  }
-}
+//     return (
+//       <p>{game.getInstructionMessage()}</p>
+//     );
+//   }
+// }
