@@ -32,5 +32,5 @@ export abstract class GameUnit implements IGameUnit {
     return this.parameters;
   }
 
-  public abstract calculateRevenue(): Promise<number>;
+  public abstract calculateScore(): Promise<number>;
 }

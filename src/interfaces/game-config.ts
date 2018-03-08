@@ -5,6 +5,7 @@ export interface IGameConfig {
   name: string;
   description: string;
   id?: string;
+  databaseId?: string;
   developerKey: string;
   developerSecret: string;
   logo?: string;
