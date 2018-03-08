@@ -19,7 +19,7 @@ export class Match extends GameUnit implements IGameUnit {
     super(Match.GAME_UNIT_CONFIG);
   }
 
-  public calculateRevenue(): Promise<number> {
+  public calculateScore(): Promise<number> {
     return new Promise<number>((resolve, reject) => {
       const kill = new Kill();
       let revenue: number = 0;
