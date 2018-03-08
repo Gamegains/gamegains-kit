@@ -45,10 +45,11 @@ export abstract class Game implements IGame {
   constructor(settings: IGameConfig) {
     this.name = settings.name;
     this.description = settings.description;
-    this.developerKey = settings.developerKey;
 
     this.id = settings.id || kebabCase(settings.name);
     this.databaseId = settings.databaseId || camelCase(settings.name);
+
+    this.logo = settings.logo;
 
     this.developerKey = settings.developerKey;
     this.developerSecret = settings.developerSecret;
