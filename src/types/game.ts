@@ -3,7 +3,7 @@ import { IAuthResult, IField, IGame, IGameConfig } from '../interfaces';
 import { camelCase, chain, kebabCase, uniqBy } from 'lodash';
 import * as React from 'react';
 import { AuthTypes } from '../enums';
-import { Instructions, withGame } from '../views';
+// import { Instructions, withGame } from '../views';
 import { Field } from './field';
 import { GameUnit } from './game-unit';
 
@@ -115,9 +115,9 @@ export abstract class Game implements IGame {
     return this.instructionMessage;
   }
 
-  public getInstructions(): React.PureComponent | React.Component {
-    return withGame(this)(Instructions);
-  }
+  // public getInstructions(): React.PureComponent | React.Component {
+  //   return withGame(this)(Instructions);
+  // }
 
   public getRequiredFields(): IField[] {
     return this.requiredFields;
