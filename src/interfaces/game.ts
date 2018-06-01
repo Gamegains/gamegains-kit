@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AuthTypes } from '../enums';
-import { IAuthResult, IField } from '../interfaces';
+import { IAuthResult, IField, IGameUnit } from '../interfaces';
 import { GameUnit } from '../types';
 
 export interface IGame {
@@ -21,4 +21,5 @@ export interface IGame {
   setFieldValue(id: string, value: string): void;
   generateVerificationValues(): Promise<void>;
   verifyPlayer(): Promise<IAuthResult>;
+  getLatestUnits(gameUnit: IGameUnit): Promise<IGameUnit[]>;
 }

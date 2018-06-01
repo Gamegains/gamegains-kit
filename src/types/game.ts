@@ -1,4 +1,10 @@
-import { IAuthResult, IField, IGame, IGameConfig } from '../interfaces';
+import {
+  IAuthResult,
+  IField,
+  IGame,
+  IGameConfig,
+  IGameUnit,
+} from '../interfaces';
 
 import { camelCase, chain, kebabCase, uniqBy } from 'lodash';
 import * as React from 'react';
@@ -142,6 +148,8 @@ export abstract class Game implements IGame {
   public abstract generateVerificationValues(): Promise<void>;
 
   public abstract verifyPlayer(): Promise<IAuthResult>;
+
+  public abstract getLatestUnits(gameUnit: IGameUnit): Promise<IGameUnit[]>;
 
   private getFieldById(id: string): IField {
     const fields = this.requiredFields
