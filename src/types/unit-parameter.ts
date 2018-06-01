@@ -6,6 +6,7 @@ export abstract class UnitParameter implements IUnitParameter {
   private readonly description: string;
   private readonly id: string;
   private readonly weight: number;
+  private value: any;
 
   constructor(settings: IUnitParameterConfig) {
     this.name = settings.name;
@@ -32,5 +33,11 @@ export abstract class UnitParameter implements IUnitParameter {
     return this.weight;
   }
 
-  public abstract getValue(data: any): Promise<number>;
+  public getValue(): any {
+    return this.value;
+  }
+
+  public setValue(value: any): void {
+    this.value = value;
+  }
 }

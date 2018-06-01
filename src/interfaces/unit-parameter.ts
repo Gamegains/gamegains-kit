@@ -3,5 +3,6 @@ export interface IUnitParameter {
   getDescription?(): string;
   getId?(): string;
   getWeight(): number;
-  getValue(data: any): Promise<number>;
+  getValue(): any;
+  setValue(value: any): void;
 }
