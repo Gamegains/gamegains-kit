@@ -7,5 +7,7 @@ export interface IGameUnit {
   getParameters(): IUnitParameter[];
   getParameterValue(id: string): string;
   setParameterValue(id: string, value: string): void;
+  getCurrentId(): string;
+  setCurrentId(currentId: string): void;
   calculateScore(): Promise<number>;
 }

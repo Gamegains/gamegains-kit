@@ -8,6 +8,8 @@ export abstract class GameUnit implements IGameUnit {
   private readonly id?: string;
   private readonly parameters: IUnitParameter[];
 
+  private currentId?: string;
+
   constructor(settings: IGameUnitConfig) {
     this.id = settings.id || kebabCase(settings.name);
     this.name = settings.name;
@@ -38,6 +40,14 @@ export abstract class GameUnit implements IGameUnit {
 
   public getParameters(): IUnitParameter[] {
     return this.parameters;
+  }
+
+  public getCurrentId(): string {
+    return this.currentId;
+  }
+
+  public setCurrentId(currentId: string): void {
+    this.currentId = currentId;
   }
 
   public abstract calculateScore(): Promise<number>;
