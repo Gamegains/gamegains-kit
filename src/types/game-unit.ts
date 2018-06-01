@@ -28,11 +28,11 @@ export abstract class GameUnit implements IGameUnit {
     return this.id;
   }
 
-  public getParameterValue(id: string): string {
+  public getParameterValue(id: string): any {
     return this.getParameterById(id).getValue();
   }
 
-  public setParameterValue(id: string, value: string): void {
+  public setParameterValue(id: string, value: any): void {
     this.getParameterById(id).setValue(value);
   }
 
