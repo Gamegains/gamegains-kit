@@ -1,4 +1,4 @@
-import { IUnitParameter } from "./unit-parameter";
+import { IUnitParameter } from './unit-parameter';
 
 export interface IGameUnitConfig {
   id?: string;

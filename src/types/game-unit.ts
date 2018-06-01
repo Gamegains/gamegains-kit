@@ -6,7 +6,7 @@ export abstract class GameUnit implements IGameUnit {
   private readonly name: string;
   private readonly description?: string;
   private readonly id?: string;
-  private readonly parameters: UnitParameter[];
+  private readonly parameters: IUnitParameter[];
 
   constructor(settings: IGameUnitConfig) {
     this.id = settings.id || kebabCase(settings.name);
