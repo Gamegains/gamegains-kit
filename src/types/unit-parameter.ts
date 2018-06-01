@@ -32,5 +32,5 @@ export abstract class UnitParameter implements IUnitParameter {
     return this.weight;
   }
 
-  public abstract getValue(): Promise<number>;
+  public abstract getValue(data: any): Promise<number>;
 }
