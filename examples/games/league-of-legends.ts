@@ -17,6 +17,8 @@ export class LeagueOfLegends extends Game implements IGame {
   private static readonly GAME_CONFIG: IGameConfig = {
     name: 'League of Legends',
 
+    databaseId: 'lol',
+
     description:
       'League of Legends (abbreviated LoL) is a multiplayer ' +
       'online battle arena video game developed and published ' +
@@ -28,10 +30,22 @@ export class LeagueOfLegends extends Game implements IGame {
 
     gameUnits: Game.initType<GameUnit>(Match),
     authTypes: [AuthTypes.LOGIN, AuthTypes.CODE],
+
+    requiredFields: [],
+    dataFields: [],
+    verificationFields: [],
   };
 
   constructor() {
     super(LeagueOfLegends.GAME_CONFIG);
+  }
+
+  public generateVerificationValues(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  public verifyPlayer(): Promise<IAuthResult> {
+    return Promise.resolve(AuthResult.METHOD_NOT_IMPLEMENTED);
   }
 
   protected authenticateWithLogin(): Promise<IAuthResult> {

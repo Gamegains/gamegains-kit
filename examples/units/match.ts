@@ -12,7 +12,6 @@ export class Match extends GameUnit implements IGameUnit {
   private static GAME_UNIT_CONFIG: IGameUnitConfig = {
     name: 'Match',
     description: 'Main game unit in League of Legends',
-    parameters: Game.initType<UnitParameter>(Kill),
   };
 
   constructor() {

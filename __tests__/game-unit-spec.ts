@@ -8,7 +8,6 @@ describe('GameUnit type', () => {
     expect(gameUnitInstance.getName()).toBe('Match');
     expect(gameUnitInstance.getDescription().length).toBeGreaterThan(0);
     expect(gameUnitInstance.getId()).toBe('match');
-    expect(gameUnitInstance.getParameters().length).toBeGreaterThan(0);
   });
 
   test('static methods', () => {
