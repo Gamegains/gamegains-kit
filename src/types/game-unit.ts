@@ -1,19 +1,16 @@
 import { kebabCase } from 'lodash';
-import { IGameUnit, IGameUnitConfig, IUnitParameter } from '../interfaces';
+import { IGameUnit, IGameUnitConfig } from '../interfaces';
 
 export abstract class GameUnit implements IGameUnit {
   private readonly name: string;
   private readonly description?: string;
   private readonly id?: string;
-  private readonly parameters: IUnitParameter[];
 
   constructor(settings: IGameUnitConfig) {
     this.name = settings.name;
     this.description = settings.description;
 
     this.id = settings.id || kebabCase(settings.name);
-
-    this.parameters = settings.parameters || [];
   }
 
   public getName(): string {
@@ -26,10 +23,6 @@ export abstract class GameUnit implements IGameUnit {
 
   public getId(): string {
     return this.id;
-  }
-
-  public getParameters(): IUnitParameter[] {
-    return this.parameters;
   }
 
   public abstract calculateScore(): Promise<number>;
