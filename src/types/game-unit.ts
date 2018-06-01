@@ -1,20 +1,19 @@
-import { kebabCase } from 'lodash';
-import { IGameUnit, IGameUnitConfig } from '../interfaces';
+import { chain, kebabCase } from 'lodash';
+import { IGameUnit, IGameUnitConfig, IUnitParameter } from '../interfaces';
 import { UnitParameter } from './unit-parameter';
 
 export abstract class GameUnit implements IGameUnit {
   private readonly name: string;
   private readonly description?: string;
   private readonly id?: string;
-  private readonly publicParameters?: UnitParameter[];
+  private readonly parameters: UnitParameter[];
 
   constructor(settings: IGameUnitConfig) {
+    this.id = settings.id || kebabCase(settings.name);
     this.name = settings.name;
     this.description = settings.description;
 
-    this.id = settings.id || kebabCase(settings.name);
-
-    this.publicParameters = settings.publicParameters || [];
+    this.parameters = settings.parameters || [];
   }
 
   public getName(): string {
@@ -29,9 +28,24 @@ export abstract class GameUnit implements IGameUnit {
     return this.id;
   }
 
-  public getPublicParameters(): UnitParameter[] {
-    return this.publicParameters;
+  public getParameterValue(id: string): string {
+    return this.getParameterById(id).getValue();
+  }
+
+  public setParameterValue(id: string, value: string): void {
+    this.getParameterById(id).setValue(value);
+  }
+
+  public getParameters(): IUnitParameter[] {
+    return this.parameters;
   }
 
   public abstract calculateScore(): Promise<number>;
+
+  private getParameterById(id: string): IUnitParameter {
+    return chain(this.parameters)
+      .uniqBy(UnitParameter.byId)
+      .find((parameter: any) => parameter.getId() === id)
+      .value() as IUnitParameter;
+  }
 }

@@ -1,6 +1,8 @@
+import { UnitParameter } from '../types';
+
 export interface IGameUnitConfig {
+  id?: string;
   name: string;
   description: string;
-  id?: string;
-  [field: string]: any;
+  parameters: UnitParameter[];
 }

@@ -17,6 +17,8 @@ export interface IGame {
   getRequiredFields(): IField[];
   getDataFields(): IField[];
   getVerificationFields(): IField[];
+  getFieldValue(id: string): string;
+  setFieldValue(id: string, value: string): void;
   generateVerificationValues(): Promise<void>;
   verifyPlayer(): Promise<IAuthResult>;
 }

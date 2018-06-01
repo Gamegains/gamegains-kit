@@ -1,6 +1,6 @@
 export interface IUnitParameterConfig {
+  id?: string;
   name: string;
   description?: string;
-  id?: string;
   weight: number;
 }

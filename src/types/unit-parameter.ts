@@ -2,6 +2,10 @@ import { kebabCase } from 'lodash';
 import { IUnitParameter, IUnitParameterConfig } from '../interfaces';
 
 export abstract class UnitParameter implements IUnitParameter {
+  public static byId(parameter: IUnitParameter | UnitParameter): string {
+    return parameter.getId();
+  }
+
   private readonly name: string;
   private readonly description: string;
   private readonly id: string;
@@ -9,6 +13,8 @@ export abstract class UnitParameter implements IUnitParameter {
   private value: any;
 
   constructor(settings: IUnitParameterConfig) {
+    this.id = settings.id;
+
     this.name = settings.name;
     this.description = settings.description;
 
