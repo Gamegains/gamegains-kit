@@ -19,10 +19,10 @@ describe('GameUnit type', () => {
   test('revenue calculation', async () => {
     expect.assertions(3);
 
-    await expect(gameUnitInstance.calculateRevenue()).resolves.toBeDefined();
-    await expect(gameUnitInstance.calculateRevenue()).resolves.not.toBeNaN();
+    await expect(gameUnitInstance.calculateScore()).resolves.toBeDefined();
+    await expect(gameUnitInstance.calculateScore()).resolves.not.toBeNaN();
     await expect(
-      gameUnitInstance.calculateRevenue()
+      gameUnitInstance.calculateScore()
     ).resolves.toBeGreaterThanOrEqual(0);
   });
 });
